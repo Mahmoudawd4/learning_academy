@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers\Front;
+
+use App\Http\Controllers\Controller;
+use App\Setting;
+use Illuminate\Http\Request;
+
+class ContactController extends Controller
+{
+    //
+    public function index()
+    {
+        $data['sett']=Setting::first();
+
+        return view('forent.contact.index')->with($data);
+
+
+    }
+}
