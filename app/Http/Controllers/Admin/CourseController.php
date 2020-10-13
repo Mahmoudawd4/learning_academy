@@ -34,10 +34,12 @@ class CourseController extends Controller
     {
       $data=$request->validate([
             'name'=>'required|string|max:50',
-            'phone'=>'nullable|string|max:50',
-            'spec'=>'required|string|max:20',
+            'content'=>'required|string',
+            'desc'=>'required|string',
+            'price'=>'required|integer',
+            'category_id'=>'required|exists:categories,id',
+            'trainer_id'=>'required|exists:trainers,id',
             'img'=>'required|image|mimes:jpg,jpeg,png'
-
         ]);
 
         $new_name=$data['img']->hashName();
@@ -52,8 +54,10 @@ class CourseController extends Controller
 
     public function edit($id)
     {
-       $course=Course::FindOrFail($id);
-        return view('Admin.courses.edit' ,compact('course'));
+        $data['cats']=Category::select('id' , 'name')->get();
+        $data['trainers']=Trainer::select('id','name')->get();
+        $data['course']=Course::FindOrFail($id);
+        return view('Admin.courses.edit')->with($data);
 
     }
 
@@ -62,9 +66,12 @@ class CourseController extends Controller
     {
         $data=$request->validate([
             'name'=>'required|string|max:50',
-            'phone'=>'nullable|string|max:50',
-            'spec'=>'required|string|max:20',
-            'img'=>'nullable|image|mimes:jpg,jpeg,png',
+            'content'=>'required|string',
+            'desc'=>'required|string',
+            'price'=>'required|integer',
+            'category_id'=>'required|exists:categories,id',
+            'trainer_id'=>'required|exists:trainers,id',
+            'img'=>'nullable|image|mimes:jpg,jpeg,png'
         ]);
 
       $course=Course::findOrFail($id);
@@ -79,7 +86,7 @@ class CourseController extends Controller
            Storage::disk('uploads')->delete('courses/'.$old_name);
             //erfa3 ehsoura
            $new_name=$data['img']->hashName();
-            Image::make($data['img'])->resize(50, 50)->save(public_path('uploads/courses/'.$new_name));
+            Image::make($data['img'])->resize(570, 406)->save(public_path('uploads/courses/'.$new_name));
             $data['img']=$new_name;
       }else
       {

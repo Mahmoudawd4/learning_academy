@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
 
-class AdminAuth
+class AdminAuthApi
 {
     /**
      * Handle an incoming request.
@@ -16,13 +15,7 @@ class AdminAuth
      */
     public function handle($request, Closure $next)
     {
-
-        if(! Auth::check())
-        {
-            return redirect(route('Admin.login'));
-        }
-
         return $next($request);
-
     }
+    
 }

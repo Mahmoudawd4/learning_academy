@@ -61,9 +61,12 @@
 
                         </ul>
                     </div>
+
+
+
                     <div class="my-5">
                     @include('forent.inc.errors')
-                    <form class="form-contact contact_form" action="{{ route('front.message.enroll') }}" method="POST"  >
+                    {{-- <form class="form-contact contact_form" action="{{ route('front.message.enroll') }}" method="POST"  >
                       @csrf
                       <div class="row">
                           <input type="hidden" name="course_id" value="{{$courses->id}}">
@@ -87,7 +90,69 @@
                       <div class="form-group mt-3">
                         <button type="submit" class="button button-contactForm btn_1">Enroll</button>
                       </div>
-                    </form>
+                    </form> --}}
+
+
+    {{-- <form action="{{ route('front.message.enroll') }}" method="POST">
+                        @csrf
+
+                <div class="row">
+                <input type="hidden" name="course_id" value="{{$courses->id}}">
+
+
+                    <div class="form-group col-12">
+                      <label for="">Name :</label>
+
+
+                      <input type="text" name="name" id="" class="form-control" placeholder="" aria-describedby="helpId">
+
+                    </div>
+
+                    <div class="form-group col-12">
+                        <label for="">Email :</label>
+
+                        <input type="email" name="email" id="" class="form-control" placeholder="" aria-describedby="helpId">
+
+                    </div>
+
+                      <div class="form-group col-12">
+                        <label for="">Spec</label>
+
+                        <input type="text" name="spec" id="" class="form-control" placeholder="" aria-describedby="helpId">
+
+                      </div>
+                      <button type="submit" class="btn btn-success mt-4">Enroll</button>
+
+                </div>
+
+
+
+
+    </form> --}}
+
+                                <form action="{{route('front.message.enroll') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="course_id" value="{{$courses->id}}">
+
+                                    <div class="form-group">
+                                        <label for="my-input">Name:</label>
+                                        <input id="my-input" class="form-control" type="text" name="name">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="my-input">Email:</label>
+                                        <input id="my-input" class="form-control" type="text" name="email">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="my-input">Speciality:</label>
+                                        <input id="my-input" class="form-control" type="text" name="spec">
+                                    </div>
+
+                                    <input class="btn_1 d-block" type="submit" value="Enroll the course">
+
+                                </form>
+
                 </div>
                 </div>
             </div>

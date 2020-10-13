@@ -47,10 +47,13 @@
                                 <li class="nav-item active">
                                     <a class="nav-link" href="{{route('front.homepage')}}">Home</a>
                                 </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{route('front.getcourse')}}">Courses</a>
+                                </li>
 
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Courses
+                                        Categories
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         @foreach ($cats as $cate)

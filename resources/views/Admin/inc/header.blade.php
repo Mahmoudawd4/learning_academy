@@ -29,10 +29,15 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('Admin.courses.index') }}">Corses </a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ route('Admin.students.index') }}">Students </a>
+                </li>
 
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('Admin.logout') }}">logout </a>
                 </li>
+
+
             </ul>
         </div>
     </nav>

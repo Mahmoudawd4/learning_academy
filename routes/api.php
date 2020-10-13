@@ -14,6 +14,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//api response
+//get All courses
+Route::get('/courses', 'CourseControllerApi@getAll');
+//show courses
+Route::get('/cat/course/{c_id}','CourseControllerApi@show');
+
+Route::get('/cat/{id}','CourseControllerApi@cat');
+
+
+
+//crad cat
+Route::get('/cats','CatControllerApi@index');
+Route::post('/cats/store','CatControllerApi@store');
+Route::post('/cats/update/{id}','CatControllerApi@update');
+Route::get('/cats/delete/{id}','CatControllerApi@delete');
+
+

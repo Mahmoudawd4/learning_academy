@@ -1,0 +1,12 @@
+get All Courses:
+http://localhost:8080/learning_academy/public/api/courses
+show course id :
+http://localhost:8080/learning_academy/public/api/cat/course/2
+get cat :
+http://localhost:8080/learning_academy/public/api/cat/2 
+
+CRAD Category
+Read :http://localhost:8080/learning_academy/public/api/cats
+creat:http://localhost:8080/learning_academy/public/api/cats/store?name=
+update:http://localhost:8080/learning_academy/public/api/cats/update/{id}?name=franch updated
+delet:http://localhost:8080/learning_academy/public/api/cats/delete/{id}

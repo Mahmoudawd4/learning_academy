@@ -37,7 +37,7 @@
 
 <div class="form-group">
     <label for="">content :</label>
-    <input type="text" name="phone" id="" class="form-control" placeholder="" aria-describedby="helpId">
+    <input type="text" name="content" id="" class="form-control" placeholder="" aria-describedby="helpId">
 </div>
 
 <div class="form-group">
@@ -48,6 +48,7 @@
 <div class="form-group">
     <label for="">price</label>
     <input type="text" name="price" id="" class="form-control" placeholder="" aria-describedby="helpId">
+
 
   </div>
   <div class="form-group">

@@ -26,6 +26,8 @@
               <input type="password" name="password" class="form-control" name="" id="" placeholder="">
             </div>
             <button type="submit" class="btn btn-primary">login</button>
+        <a type="submit" class="btn btn-success" href="{{ url('dashboard/login/github') }}">Login with GitHup</a>
+
         </form>
     </div>
 

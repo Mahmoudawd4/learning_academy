@@ -29,6 +29,13 @@ Route::namespace('Front')->group(function(){
 
     Route::get('/message/enroll','MessageController@enroll')->name('front.message.enroll');
 
+    //for real time search
+    Route::get('/courses','CourseController@getCourses')->name('front.getcourse');
+    Route::get('/courses/search','CourseController@search')->name('front.search');
+
+
+
+
 
 });
 
@@ -39,6 +46,9 @@ Route::namespace('Admin')->prefix('dashboard')->group(function(){
 
     Route::get('/login','AuthController@login')->name('Admin.login');
     Route::post('/do-login','AuthController@doLogin')->name('Admin.doLogin');
+
+    Route::get('login/github', 'AuthController@redirectToProvider');
+    Route::get('login/github/callback', 'AuthController@handleProviderCallback');
 
 
     Route::middleware('adminAuth')->group(function(){
@@ -72,6 +82,18 @@ Route::namespace('Admin')->prefix('dashboard')->group(function(){
         Route::get('/courses/delete/{id}','CourseController@delete')->name('Admin.courses.delete');
 
 
+        Route::get('/students','StudentController@index')->name('Admin.students.index');
+        Route::get('/students/create','StudentController@create')->name('Admin.students.create');
+        Route::post('/students/store','StudentController@store')->name('Admin.students.store');
+        Route::get('/students/edit/{id}','StudentController@edit')->name('Admin.students.edit');
+        Route::post('/students/update/{id}','StudentController@update')->name('Admin.students.update');
+        Route::get('/students/delete/{id}','StudentController@delete')->name('Admin.students.delete');
+
+        Route::get('/students/show-courses/{id}','StudentController@showCourses')->name('Admin.show-courses.student');
+        Route::get('/students/{id}/courses/{c_id}/approve','StudentController@approveCourses')->name('Admin.students.approve-courses');
+        Route::get('/students/{id}/courses/{c_id}/reject','StudentController@rejectCourses')->name('Admin.students.reject-courses');
+        Route::get('/students/{id}/add-to-course','StudentController@addCourse')->name('Admin.students.addCourse');
+        Route::post('/students/{id}/store-course','StudentController@storeCourse')->name('Admin.students.storeCourse');
 
     });
 

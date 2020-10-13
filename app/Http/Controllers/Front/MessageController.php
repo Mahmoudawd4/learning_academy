@@ -44,9 +44,7 @@ class MessageController extends Controller
 
     public function enroll(Request $request)
     {
-
         dd($request->email);
-
         $data=$request->validate([
 
             'name'=>'nullable|string|max:191',
@@ -54,16 +52,35 @@ class MessageController extends Controller
             'spec'=>'nullable|string|max:191',
             'course_id'=>'nullable|exists:courses,id'
         ]);
-       $student= Student::create([
-            'name'=> $data['name'] ,
-            'email'=> $data['email'] ,
-            'spec'=> $data['spec']
-        ]);
+        $old_student=Student::select('id')->where('email' ,$data['email'])->first();
 
-        $student_id=$student->id;
+        if($old_student == null) {
+
+            $student= Student::create([
+                'name'=> $data['name'] ,
+                'email'=> $data['email'] ,
+                'spec'=> $data['spec']
+            ]);
+            $student_id=$student->id;
+        }else
+        {
+            $student_id=$old_student->id;
+            if($data['name'] !==null) {
+                $old_student->update(['name'=>$data['name']]);
+
+            }
+            if($data['spec'] !==null) {
+                $old_student->update(['spec'=>$data['spec']]);
+
+            }
+        }
+
+
         DB::table('course_student')->insert([
             'course_id'=>$data['course_id'] ,
-            'student_id'=>$student_id
+            'student_id'=>$student_id ,
+            'created_at' =>now(),
+            'updated_at' =>now(),
         ]);
         return back();
 

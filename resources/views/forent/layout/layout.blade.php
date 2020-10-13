@@ -4,6 +4,7 @@
 
 @yield('content')
 
+@yield('script')
 
 @include('forent.inc.footer')
 
